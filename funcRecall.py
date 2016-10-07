@@ -1,7 +1,7 @@
 import hashlib, pickle, os, inspect
 
 
-def funcRecall(func):
+class funcRecall(func):
     '''Decorator to print function call details - parameters names and effective values'''
     
     def checkExistenceOfPyrememberFolder():
