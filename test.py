@@ -5,7 +5,7 @@ from funcRecall import funcRecall
 @funcRecall
 def slow_func():
     time.sleep(2)
-    return 'Some output'
+    return 'Some output111'
 
 if __name__ == '__main__':
 
