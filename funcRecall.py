@@ -48,3 +48,13 @@ def funcRecall(func):
 
         return func_return
     return wrapper  
+
+
+import shutil
+
+def forgetRecalls():
+    try:
+        shutil.rmtree('.pyRecall')
+    except:
+        print('Nothing to forget')
+
