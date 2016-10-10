@@ -1,26 +1,30 @@
-'''Main for funcRecall'''
+'''Main for pyRecall'''
 import hashlib
 import pickle
 import os
 import inspect
 import shutil
 
-def pyRecall(func):
+def pyRecall(func, verbose=False):
     '''Decorator to print function call details - parameters names and effective values'''
 
-    def checkExistenceOfPyrememberFolder():
+    def checkExistenceOfPyRecallFolder():
         return os.path.exists(".pyRecall")
+        
+    def pickleFile(func_name, hash_val):
+        '''Return string with path and file name of the pickle'''
+        return ".pyRecall/"+func_name+"_"+hash_val+".p"
 
     def checkWhetherPickleExists(func_name, hash_val):
-        fname = ".pyRecall/"+func_name+"_"+hash_val+".p"
+        fname = pickleFile(func_name, hash_val)
         return os.path.exists(fname)
 
     def loadPickle(func_name, hash_val):
-        fname = ".pyRecall/"+func_name+"_"+hash_val+".p"
+        fname = pickleFile(func_name, hash_val)
         return pickle.load(open(fname, "rb"))
 
     def dumpPickle(func_name, func_return, hash_val):
-        fname = ".pyRecall/"+func_name+"_"+hash_val+".p"
+        fname = pickleFile(func_name, hash_val)
         pickle.dump(func_return, open(fname, "wb"))
 
     def wrapper(*func_args, **func_kwargs):
@@ -47,7 +51,7 @@ def pyRecall(func):
         hash_val = hashlib.md5(z).hexdigest()
         #print(hash_val)
 
-        if checkExistenceOfPyrememberFolder() == False:
+        if checkExistenceOfPyRecallFolder() == False:
             os.mkdir('.pyRecall')
 
         if checkWhetherPickleExists(func_name, hash_val) == True:
