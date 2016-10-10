@@ -15,16 +15,17 @@ def clearPycache():
 if __name__ == '__main__':
 
     
-    test1 = False
-    test2 = False
+    test1 = True
+    test2 = True
     test3 = True
+    test4 = True
     
     if test1:
-        print('Test 1: Simplest test case')
+        print('\nTest 1: Simplest test case')
         
-        @pr.pyRecall
+        @pr.pyRecall()
         def slow_func():
-            time.sleep(2)
+            time.sleep(1)
             return 'Some output'
         
         #Delete preceding funcRecall archives
@@ -40,9 +41,9 @@ if __name__ == '__main__':
 
             
     if test2:
-        print('Test 2: Test on numpy object')
+        print('\nTest 2: Test on numpy object')
         
-        @pr.pyRecall
+        @pr.pyRecall()
         def numpy_func1(inMat):
             return np.linalg.det(inMat)
         
@@ -60,13 +61,35 @@ if __name__ == '__main__':
 
             
     if test3:
-        print('Test 3: Argument passing')
+        print('\nTest 3: Change in function code')
         
-        @pr.pyRecall
-        def func():
-            return 'sadfsdf'
+        @pr.pyRecall(verbose_pickleFile = True)
+        def function():
+            return 'George II.'
+        function()
+        
+        @pr.pyRecall(verbose_pickleFile = True)
+        def function():
+            return 'George IV.'
+        function()
+        
+        print('Output files must be different')
+
+        
             
-        func()
+    if test4:
+        print('\nTest 4: Change in function name')
         
+        @pr.pyRecall(verbose_pickleFile = True)
+        def function1():
+            return 'George III.'
+        function1()
+        
+        @pr.pyRecall(verbose_pickleFile = True)
+        def function2():
+            return 'George III.'
+        function2()
+        
+        print('Output files must be different')
 
     
