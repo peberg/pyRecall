@@ -1,1 +1,1 @@
-from .funcRecall import *
+from pyRecall import *

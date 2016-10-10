@@ -5,20 +5,23 @@ import os
 import inspect
 import shutil
 
-def funcRecall(func):
+def pyRecall(func):
     '''Decorator to print function call details - parameters names and effective values'''
 
     def checkExistenceOfPyrememberFolder():
         return os.path.exists(".pyRecall")
 
     def checkWhetherPickleExists(func_name, hash_val):
-        return os.path.exists(".pyRecall/"+func_name+"_"+hash_val+".p")
+        fname = ".pyRecall/"+func_name+"_"+hash_val+".p"
+        return os.path.exists(fname)
 
     def loadPickle(func_name, hash_val):
-        return pickle.load(open(".pyRecall/"+func_name+"_"+hash_val+".p", "rb"))
+        fname = ".pyRecall/"+func_name+"_"+hash_val+".p"
+        return pickle.load(open(fname, "rb"))
 
     def dumpPickle(func_name, func_return, hash_val):
-        pickle.dump(func_return, open(".pyRecall/"+func_name+"_"+hash_val+".p", "wb"))
+        fname = ".pyRecall/"+func_name+"_"+hash_val+".p"
+        pickle.dump(func_return, open(fname, "wb"))
 
     def wrapper(*func_args, **func_kwargs):
         arg_names = func.__code__.co_varnames[:func.__code__.co_argcount]
