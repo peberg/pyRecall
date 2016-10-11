@@ -2,26 +2,10 @@ language: python
 python:
   - "3.2"
   - "3.3"
+  - "3.4"
   - "3.5"
-  - "3.6"  
-
-os:
-  - linux
-
-# command to install dependencies
-install: "pip3 install numpy"
-
-addons:
-  apt:
-    packages:
-    - python3-numpy
-    - git
-
-branches:
-  only:
-    - master
-    
-
-#install:
-#  - git clone https://github.com/peberg/pyRecall
-#  - python setup.py install
+sudo: false
+script: nosetests test --verbose
+notifications:
+  email:
+    - peter_bergmann@posteo.de
