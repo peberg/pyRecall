@@ -1,4 +1,4 @@
-'''Main for pyRecall'''
+"""Main for pyRecall"""
 import hashlib
 import pickle
 import os
@@ -10,7 +10,7 @@ def pyRecall(verbose = False, \
              verbose_pickleFile = False, \
              verbose_timeit = False, \
              verbose_toBeHashed = False):
-    '''peed up repeated function executions (in Python 3) by dumping/reloading pickle files.'''
+    """Speed up repeated function executions (in Python 3) by dumping/reloading pickle files."""
 
     def pyRecallInner(func):
 
@@ -18,7 +18,7 @@ def pyRecall(verbose = False, \
             return os.path.exists(".pyRecall")
 
         def pickleFile(func_name, hash_val):
-            '''Return string with path and file name of the pickle'''
+            """Return string with path and file name of the pickle"""
             return ".pyRecall/"+func_name+"_"+hash_val+".p"
 
         def checkWhetherPickleExists(func_name, hash_val):
@@ -82,7 +82,7 @@ def pyRecall(verbose = False, \
 
 
 def forgetRecalls():
-    '''Remove pre-existing pyRecall archive'''
+    """Remove pre-existing pyRecall archive"""
     try:
         shutil.rmtree('.pyRecall')
     except:

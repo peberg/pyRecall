@@ -1,4 +1,4 @@
-'''Tests for pyRecall'''
+"""Tests for pyRecall"""
 import shutil
 import time
 import numpy as np
@@ -7,7 +7,7 @@ import pyRecall as pr
 
 
 def clear_pycache():
-    '''Remove ___pycache___'''
+    """Remove ___pycache___"""
     try:
         shutil.rmtree(pr.__path__[0]+'/__pycache__')
     except:
@@ -45,7 +45,7 @@ if __name__ == '__main__':
 
         @pr.pyRecall(verbose_timeit=True)
         def numpy_func1(mat):
-            '''Return determinant'''
+            """Return determinant"""
             return np.linalg.det(mat)
 
         #Delete preceding funcRecall archives
@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
         @pr.pyRecall(verbose_timeit=True)
         def slow_func(mat):
-            '''Return determinant'''
+            """Return determinant"""
             return np.linalg.det(mat)
 
         mat = np.random.rand(2000, 2000)
