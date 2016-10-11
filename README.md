@@ -11,14 +11,14 @@ mat = np.random.rand(2000, 2000)
 
 @pr.pyRecall(verbose_timeit=True)
 def slow_func(mat):
-    """Return determinant"""
+    """Compute determinant"""
     return np.linalg.det(mat)
 
-#First call
+#Initial call
 slow_func(mat)
 >>> Execution time: 130.9 ms
 
-#Second call reverts to cache
+#Repeated call reverts to cache
 slow_func(mat)
 >>> Execution time: 0.2 ms
 ```

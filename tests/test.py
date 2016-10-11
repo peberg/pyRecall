@@ -115,7 +115,7 @@ if __name__ == '__main__':
 
         @pr.pyRecall(verbose_timeit=True)
         def slow_func(mat):
-            """Return determinant"""
+            """Compute determinant"""
             return np.linalg.det(mat)
 
         mat = np.random.rand(2000, 2000)
