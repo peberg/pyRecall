@@ -1,5 +1,5 @@
 # pyRecall
-Speed up repeated function executions (in Python 3) by dumping/reloading pickle files.
+Speed up repeated function executions (in Python 3) by dumping/loading pickle files.
 [![Build Status](https://travis-ci.org/peberg/pyRecall.png)](https://travis-ci.org/peberg/pyRecall)
 
 
@@ -18,7 +18,7 @@ def slow_func(mat):
 slow_func(mat)
 >>> Execution time: 130.9 ms
 
-#Second call can revert to cache
+#Second call reverts to cache
 slow_func(mat)
 >>> Execution time: 0.2 ms
 ```
