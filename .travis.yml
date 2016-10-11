@@ -5,10 +5,23 @@ python:
   - "3.5"
   - "3.6"  
 
-# command to install dependencies
-install: "pip install numpy"
+os:
+  - linux
 
-script: python tests/test_all_of_the_units.py
+# command to install dependencies
+install: "pip3 install numpy"
+
+addons:
+  apt:
+    packages:
+    - python3-numpy
+    - git
+
 branches:
   only:
     - master
+    
+
+install:
+  - git clone https://github.com/peberg/pyRecall
+  - python setup.py install

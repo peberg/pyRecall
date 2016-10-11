@@ -20,7 +20,7 @@ slow_func(mat)
 
 #Second call can revert to cache
 slow_func(mat)
->>> Execution time: 0.22 ms
+>>> Execution time: 0.2 ms
 ```
 
 ##Installation
