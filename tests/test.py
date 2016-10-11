@@ -28,15 +28,14 @@ if __name__ == '__main__':
         @pr.pyRecall(verbose_timeit = True)
         def slow_func():
             time.sleep(1)
-            return 'Some output'
         
         #Delete preceding funcRecall archives
         pr.forgetRecalls()
 
         slow_func()
-        clearPycache()          
+        #clearPycache()          
         slow_func()       
-        clearPycache()        
+        #clearPycache()        
             
     if test2:
         print('\nTest 2: Test on numpy object')
