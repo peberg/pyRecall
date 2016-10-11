@@ -3,11 +3,11 @@
 Emulate the capabilities of make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) through function decorators, i.e. save computation time by accelerating repetitive function executions.
 ```python
 import numpy as np
-from pyRecall import pyRecall
+from pyRecall import recall
 
 mat = np.random.rand(2000, 2000)
 
-@pyRecall(timer=True)
+@recall(timer=True)
 def slow_func(mat):
     """Compute determinant"""
     return np.linalg.det(mat)
@@ -32,7 +32,7 @@ slow_func(mat2)
 slow_func(mat1)
 >>> Execution time: 0.1 ms
 ```
-Since the hashing is also taking the function code into account, pyRecall is compliant with function code changes.
+Since the hashing is also taking the function code into account, pyRecall is compliant with code changes.
 
 Clearing the pyRecall history works as follows
 ```python

@@ -6,7 +6,7 @@ import inspect
 import shutil
 import timeit
 
-def pyRecall(verbose = False, \
+def recall(verbose = False, \
              verbose_pickleFile = False, \
              timer = False, \
              verbose_toBeHashed = False):

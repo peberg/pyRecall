@@ -2,7 +2,7 @@
 import shutil
 import time
 import numpy as np
-from pyRecall import pyRecall, purgeRecalls
+from pyRecall import recall, purgeRecalls
 import pyRecall as pr
 
 
@@ -28,7 +28,7 @@ if __name__ == '__main__':
     if test1:
         print('\nTest 1: Simplest test case')
 
-        @pyRecall(timer=True)
+        @recall(timer=True)
         def slow_func():
             time.sleep(1)
             return 'some output'
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     if test2:
         print('\nTest 2: Test on numpy object')
 
-        @pyRecall(timer=True)
+        @recall(timer=True)
         def numpy_func1(mat):
             """Return determinant"""
             return np.linalg.det(mat)
@@ -63,12 +63,12 @@ if __name__ == '__main__':
     if test3:
         print('\nTest 3: Change in function code')
 
-        @pyRecall(verbose_pickleFile=True)
+        @recall(verbose_pickleFile=True)
         def function():
             return 'George II.'
         function()
 
-        @pyRecall(verbose_pickleFile=True)
+        @recall(verbose_pickleFile=True)
         def function():
             return 'George IV.'
         function()
@@ -80,12 +80,12 @@ if __name__ == '__main__':
     if test4:
         print('\nTest 4: Change in function name')
 
-        @pyRecall(verbose_pickleFile=True)
+        @recall(verbose_pickleFile=True)
         def function1():
             return 'George III.'
         function1()
 
-        @pyRecall(verbose_pickleFile=True)
+        @recall(verbose_pickleFile=True)
         def function2():
             return 'George III.'
         function2()
@@ -96,12 +96,12 @@ if __name__ == '__main__':
     if test5:
         print('\nTest 5: Everything remains the same')
 
-        @pyRecall(verbose_pickleFile=True)
+        @recall(verbose_pickleFile=True)
         def function3():
             return 'George III.'
         function3()
 
-        @pyRecall(verbose_pickleFile=True)
+        @recall(verbose_pickleFile=True)
         def function3():
             return 'George III.'
         function3()
@@ -119,7 +119,7 @@ if __name__ == '__main__':
         
         mat = np.random.rand(2000, 2000)
         
-        @pyRecall(timer=True)
+        @recall(timer=True)
         def slow_func(mat):
             """Compute determinant"""
             return np.linalg.det(mat)
