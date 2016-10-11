@@ -2,17 +2,22 @@
 Speed up repeated function executions in Python 3 by caching pickle dumps.
 
 ``` sh
-import time
+import numpy as np
 import pyRecall as pr
 
-@pr.pyRecall(verbose_timeit = True)
-def slow_func():
-    time.sleep(1)
-    return 'some output'
+inMat = np.random.rand(2000,2000)
 
-slow_func()
->>> Execution time: 1001.47 ms
-slow_func()
+@pr.pyRecall(verbose_timeit = True)
+def slow_func(inMat):
+    '''Return determinant'''
+    return np.linalg.det(inMat)
+
+#First call
+slow_func(inMat)
+>>> Execution time: 130.9 ms
+
+#Second call can revert back to cache
+slow_func(inMat)
 >>> Execution time: 0.22 ms
 ```
 

@@ -15,12 +15,12 @@ def clearPycache():
 if __name__ == '__main__':
 
     
-    test1 = True
-    test11 = True    
-    test2 = True
-    test3 = True
-    test4 = True
-    test5 = True    
+    test1 = False
+    test2 = False
+    test3 = False
+    test4 = False
+    test5 = False
+    test999 = True        
     
     if test1:
         print('\nTest 1: Simplest test case')
@@ -103,4 +103,22 @@ if __name__ == '__main__':
         function3()
         
         print('Output files must be different')
+        
+    if test999:
+        print('\nTest 999: Test for README.md')
+        #Delete preceding funcRecall archives
+        pr.forgetRecalls()
+        
+        
+        @pr.pyRecall(verbose_timeit = True)
+        def slow_func(inMat):
+            return np.linalg.det(inMat)
+        
+        inMat = np.random.rand(2000,2000)
+
+        clearPycache()        
+        slow_func(inMat)
+        clearPycache()          
+        slow_func(inMat)
+            
     
