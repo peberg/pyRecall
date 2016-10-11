@@ -2,7 +2,7 @@
 import shutil
 import time
 import numpy as np
-from pyRecall import pyRecall, forgetRecalls
+from pyRecall import pyRecall, purgeRecalls
 import pyRecall as pr
 
 
@@ -23,6 +23,7 @@ if __name__ == '__main__':
     test4 = True
     test5 = True
     test6 = True
+    test7 = True    
 
     if test1:
         print('\nTest 1: Simplest test case')
@@ -33,7 +34,7 @@ if __name__ == '__main__':
             return 'some output'
 
         #Delete preceding funcRecall archives
-        forgetRecalls()
+        purgeRecalls()
 
         slow_func()
         clear_pycache()
@@ -49,7 +50,7 @@ if __name__ == '__main__':
             return np.linalg.det(mat)
 
         #Delete preceding funcRecall archives
-        forgetRecalls()
+        purgeRecalls()
 
         mat = np.random.rand(2000, 2000)
 
@@ -108,9 +109,9 @@ if __name__ == '__main__':
         print('Output files must be different')
 
     if test6:
-        print('\nTest 999: Test for README.md')
+        print('\nTest 6: Test for README.md, part 1')
         #Delete preceding funcRecall archives
-        forgetRecalls()
+        purgeRecalls()
 
         #------Start ------>        
         import numpy as np
@@ -125,4 +126,18 @@ if __name__ == '__main__':
 
         slow_func(mat)
         slow_func(mat)
+        #<-------End----------
+
+if test7:
+        print('\nTest 7: Test for README.md, part 2')
+        #Delete preceding funcRecall archives
+        purgeRecalls()
+
+        #------Start ------>        
+        mat1 = np.random.rand(2000, 2000)
+        mat2 = np.random.rand(2000, 2000)        
+
+        slow_func(mat1)
+        slow_func(mat2)
+        slow_func(mat1)        
         #<-------End----------

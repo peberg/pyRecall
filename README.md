@@ -1,6 +1,6 @@
 # pyRecall [![Build Status](https://travis-ci.org/peberg/pyRecall.png)](https://travis-ci.org/peberg/pyRecall)
 
-Emulate the capabilities of make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) through function decorators, i.e. save computation time by accelerating repetitive function executions. pyRecall uses adaptive pickling/unpickling of function returns and hashing, and is thereby not limited to the most function recent call (see [functools.lru_cache](https://docs.python.org/3/library/functools.html)).
+Emulate the capabilities of make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) through function decorators, i.e. save computation time by accelerating repetitive function executions.
 ```python
 import numpy as np
 from pyRecall import pyRecall
@@ -20,6 +20,24 @@ slow_func(mat)
 slow_func(mat)
 >>> Execution time: 0.2 ms
 ```
+pyRecall uses adaptive pickling/unpickling of function returns and hashing, and is thereby not limited to the most function recent call (see [functools.lru_cache](https://docs.python.org/3/library/functools.html)).
+```python
+mat1 = np.random.rand(2000, 2000)
+mat2 = np.random.rand(2000, 2000)        
+
+slow_func(mat1)
+>>> Execution time: 108.1 ms
+slow_func(mat2)
+>>> Execution time: 104.1 ms
+slow_func(mat1)
+>>> Execution time: 0.1 ms
+```
+Clearing the pyRecall history works as follows
+```python
+from pyRecall import purgeRecalls
+purgeRecalls()
+```
+
 
 ##Installation
 ``` sh

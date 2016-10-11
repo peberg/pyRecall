@@ -74,14 +74,14 @@ def pyRecall(verbose = False, \
 
             endTime = timeit.default_timer()
             if verbose or timer:
-                print('Execution time: '+str(round(1000*(endTime-startTime),2))+' ms')
+                print('Execution time: '+str(round(1000*(endTime-startTime),1))+' ms')
 
             return func_return
         return wrapper
     return pyRecallInner
 
 
-def forgetRecalls():
+def purgeRecalls():
     """Remove pre-existing pyRecall archive"""
     try:
         shutil.rmtree('.pyRecall')
