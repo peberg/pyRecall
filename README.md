@@ -1,7 +1,8 @@
 # pyRecall
 Speed up repeated function executions in Python 3 by caching pickle dumps.
 
-``` sh
+
+```python
 import numpy as np
 import pyRecall as pr
 
@@ -26,4 +27,5 @@ slow_func(inMat)
 git clone https://github.com/peberg/pyRecall
 python setup.py install
 ```
+See also
  [functools.lru_cache](https://docs.python.org/3/library/functools.html)
