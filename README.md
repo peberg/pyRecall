@@ -1,6 +1,6 @@
 # pyRecall
 Speed up repeated function executions (in Python 3) by dumping/reloading pickle files.
-<a href='https://travis-ci.org/peberg/pyRecall'><img src='https://secure.travis-ci.org/peberg/pyRecall.png?branch=<branch-name>'></a>
+[![Build Status](https://travis-ci.org/peberg/pyRecall.png)](https://travis-ci.org/peberg/pyRecall)
 
 
 ```python
