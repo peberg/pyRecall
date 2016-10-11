@@ -2,8 +2,8 @@
 import shutil
 import time
 import numpy as np
+from pyRecall import pyRecall, forgetRecalls
 import pyRecall as pr
-
 
 
 def clear_pycache():
@@ -27,13 +27,13 @@ if __name__ == '__main__':
     if test1:
         print('\nTest 1: Simplest test case')
 
-        @pr.pyRecall(timer=True)
+        @pyRecall(timer=True)
         def slow_func():
             time.sleep(1)
             return 'some output'
 
         #Delete preceding funcRecall archives
-        pr.forgetRecalls()
+        forgetRecalls()
 
         slow_func()
         clear_pycache()
@@ -43,13 +43,13 @@ if __name__ == '__main__':
     if test2:
         print('\nTest 2: Test on numpy object')
 
-        @pr.pyRecall(timer=True)
+        @pyRecall(timer=True)
         def numpy_func1(mat):
             """Return determinant"""
             return np.linalg.det(mat)
 
         #Delete preceding funcRecall archives
-        pr.forgetRecalls()
+        forgetRecalls()
 
         mat = np.random.rand(2000, 2000)
 
@@ -62,12 +62,12 @@ if __name__ == '__main__':
     if test3:
         print('\nTest 3: Change in function code')
 
-        @pr.pyRecall(verbose_pickleFile=True)
+        @pyRecall(verbose_pickleFile=True)
         def function():
             return 'George II.'
         function()
 
-        @pr.pyRecall(verbose_pickleFile=True)
+        @pyRecall(verbose_pickleFile=True)
         def function():
             return 'George IV.'
         function()
@@ -79,12 +79,12 @@ if __name__ == '__main__':
     if test4:
         print('\nTest 4: Change in function name')
 
-        @pr.pyRecall(verbose_pickleFile=True)
+        @pyRecall(verbose_pickleFile=True)
         def function1():
             return 'George III.'
         function1()
 
-        @pr.pyRecall(verbose_pickleFile=True)
+        @pyRecall(verbose_pickleFile=True)
         def function2():
             return 'George III.'
         function2()
@@ -95,12 +95,12 @@ if __name__ == '__main__':
     if test5:
         print('\nTest 5: Everything remains the same')
 
-        @pr.pyRecall(verbose_pickleFile=True)
+        @pyRecall(verbose_pickleFile=True)
         def function3():
             return 'George III.'
         function3()
 
-        @pr.pyRecall(verbose_pickleFile=True)
+        @pyRecall(verbose_pickleFile=True)
         def function3():
             return 'George III.'
         function3()
@@ -110,17 +110,19 @@ if __name__ == '__main__':
     if test6:
         print('\nTest 999: Test for README.md')
         #Delete preceding funcRecall archives
-        pr.forgetRecalls()
+        forgetRecalls()
 
+        #------Start ------>        
+        import numpy as np
+        from pyRecall import pyRecall
+        
         mat = np.random.rand(2000, 2000)
         
-        @pr.pyRecall(timer=True)
+        @pyRecall(timer=True)
         def slow_func(mat):
             """Compute determinant"""
             return np.linalg.det(mat)
 
-        clear_pycache()
         slow_func(mat)
-        clear_pycache()
         slow_func(mat)
-
+        #<-------End----------
