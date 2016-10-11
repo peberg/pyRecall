@@ -16,34 +16,32 @@ if __name__ == '__main__':
 
     
     test1 = True
+    test11 = True    
     test2 = True
     test3 = True
     test4 = True
+    test5 = True    
     
     if test1:
         print('\nTest 1: Simplest test case')
         
-        @pr.pyRecall()
+        @pr.pyRecall(verbose_timeit = True)
         def slow_func():
             time.sleep(1)
             return 'Some output'
         
         #Delete preceding funcRecall archives
         pr.forgetRecalls()
-        
-        for run in ['FIRST', 'SECOND']:
-            out = timeit.timeit("slow_func()", \
-                                 setup="from __main__ import slow_func", \
-                                 number=1)
-            print('   Execution time on '+run+' call of slow_func(): '+ \
-                  str(1000*np.around(out,decimals=4))+' ms')
-            clearPycache()
 
+        slow_func()
+        clearPycache()          
+        slow_func()       
+        clearPycache()        
             
     if test2:
         print('\nTest 2: Test on numpy object')
         
-        @pr.pyRecall()
+        @pr.pyRecall(verbose_timeit = True)
         def numpy_func1(inMat):
             return np.linalg.det(inMat)
         
@@ -51,14 +49,12 @@ if __name__ == '__main__':
         pr.forgetRecalls()
         
         inMat = np.random.rand(2000,2000)
-        for run in ['FIRST', 'SECOND']:
-            out = timeit.timeit("numpy_func1(inMat)", \
-                                 setup="from __main__ import numpy_func1, inMat", \
-                                 number=1)
-            print('   Execution time on '+run+' call of numpy_func1(): '+ \
-                  str(1000*np.around(out,decimals=4))+' ms')
-            clearPycache()
-
+        
+        numpy_func1(inMat)
+        clearPycache()          
+        numpy_func1(inMat)
+        clearPycache()  
+        
             
     if test3:
         print('\nTest 3: Change in function code')
@@ -91,5 +87,20 @@ if __name__ == '__main__':
         function2()
         
         print('Output files must be different')
-
+        
+            
+    if test5:
+        print('\nTest 5: Everything remains the same')
+        
+        @pr.pyRecall(verbose_pickleFile = True)
+        def function3():
+            return 'George III.'
+        function3()
+        
+        @pr.pyRecall(verbose_pickleFile = True)
+        def function3():
+            return 'George III.'
+        function3()
+        
+        print('Output files must be different')
     

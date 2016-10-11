@@ -4,9 +4,11 @@ import pickle
 import os
 import inspect
 import shutil
+import timeit
 
 def pyRecall(verbose = False, \
              verbose_pickleFile = False, \
+             verbose_timeit = False, \
              verbose_toBeHashed = False):
     '''Decorator to print function call details - parameters names and effective values'''
     
@@ -61,11 +63,17 @@ def pyRecall(verbose = False, \
             if checkExistenceOfPyRecallFolder() == False:
                 os.mkdir('.pyRecall')
     
+            ###    
+            startTime = timeit.default_timer()
             if checkWhetherPickleExists(func_name, hash_val) == True:
                 func_return = loadPickle(func_name, hash_val)
             else:
                 func_return = func(*func_args, **func_kwargs)
                 dumpPickle(func_name, func_return, hash_val)
+            
+            endTime = timeit.default_timer()
+            if verbose or verbose_timeit:
+                print('Execution time: '+str(round(1000*(endTime-startTime),2))+' ms')
     
             return func_return
         return wrapper
