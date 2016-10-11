@@ -9,7 +9,7 @@ import pyRecall as pr
 
 mat = np.random.rand(2000, 2000)
 
-@pr.pyRecall(verbose_timeit=True)
+@pr.pyRecall(timer=True)
 def slow_func(mat):
     """Compute determinant"""
     return np.linalg.det(mat)
@@ -18,7 +18,7 @@ def slow_func(mat):
 slow_func(mat)
 >>> Execution time: 130.9 ms
 
-#Repeated call reverts to cache
+#Repeat call reverts to cache
 slow_func(mat)
 >>> Execution time: 0.2 ms
 ```

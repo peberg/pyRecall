@@ -27,7 +27,7 @@ if __name__ == '__main__':
     if test1:
         print('\nTest 1: Simplest test case')
 
-        @pr.pyRecall(verbose_timeit=True)
+        @pr.pyRecall(timer=True)
         def slow_func():
             time.sleep(1)
             return 'some output'
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     if test2:
         print('\nTest 2: Test on numpy object')
 
-        @pr.pyRecall(verbose_timeit=True)
+        @pr.pyRecall(timer=True)
         def numpy_func1(mat):
             """Return determinant"""
             return np.linalg.det(mat)
@@ -112,13 +112,12 @@ if __name__ == '__main__':
         #Delete preceding funcRecall archives
         pr.forgetRecalls()
 
-
-        @pr.pyRecall(verbose_timeit=True)
+        mat = np.random.rand(2000, 2000)
+        
+        @pr.pyRecall(timer=True)
         def slow_func(mat):
             """Compute determinant"""
             return np.linalg.det(mat)
-
-        mat = np.random.rand(2000, 2000)
 
         clear_pycache()
         slow_func(mat)

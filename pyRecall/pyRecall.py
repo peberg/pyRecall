@@ -8,7 +8,7 @@ import timeit
 
 def pyRecall(verbose = False, \
              verbose_pickleFile = False, \
-             verbose_timeit = False, \
+             timer = False, \
              verbose_toBeHashed = False):
     """Speed up repeated function executions (in Python 3) by dumping/reloading pickle files."""
 
@@ -73,7 +73,7 @@ def pyRecall(verbose = False, \
                     print("Pickle problem encountered")
 
             endTime = timeit.default_timer()
-            if verbose or verbose_timeit:
+            if verbose or timer:
                 print('Execution time: '+str(round(1000*(endTime-startTime),2))+' ms')
 
             return func_return
