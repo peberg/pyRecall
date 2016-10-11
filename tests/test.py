@@ -28,6 +28,7 @@ if __name__ == '__main__':
         @pr.pyRecall(verbose_timeit = True)
         def slow_func():
             time.sleep(1)
+            return 'some output'
         
         #Delete preceding funcRecall archives
         pr.forgetRecalls()
