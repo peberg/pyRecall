@@ -20,7 +20,7 @@ slow_func(mat)
 slow_func(mat)
 >>> Execution time: 0.2 ms
 ```
-pyRecall uses adaptive pickling/unpickling of function returns and hashing, and is thereby not limited to the most recent function call (see [functools.lru_cache](https://docs.python.org/3/library/functools.html)).
+pyRecall uses adaptive pickling/unpickling of function returns and hashing, and is thereby not limited to the most recent function call (similar to [functools.lru_cache](https://docs.python.org/3/library/functools.html)).
 ```python
 mat1 = np.random.rand(2000, 2000)
 mat2 = np.random.rand(2000, 2000)        
