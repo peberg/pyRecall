@@ -1,6 +1,6 @@
 # pyRecall [![Build Status](https://travis-ci.org/peberg/pyRecall.png)](https://travis-ci.org/peberg/pyRecall)
 
-Emulate the capabilities of make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) through function decorators, i.e. save computation time by accelerating repetitive function executions.
+Emulate the capabilities of make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) in python code through function decorators, i.e. save computation time by accelerating repetitive function executions.
 ```python
 import numpy as np
 from pyRecall import recall
@@ -16,7 +16,7 @@ def slow_func(mat):
 slow_func(mat)
 >>> Execution time: 130.9 ms
 
-#Repetitive call reverts to pickle
+#Repetitive call reverts to return of initial call
 slow_func(mat)
 >>> Execution time: 0.2 ms
 ```
