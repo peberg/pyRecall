@@ -1,6 +1,6 @@
 # pyRecall [![Build Status](https://travis-ci.org/peberg/pyRecall.png)](https://travis-ci.org/peberg/pyRecall)
 
-Emulate the capabilities of make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) in python code through function decorators, i.e. save computation time by accelerating repetitive function executions.
+Emulate make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) in python code through function decorators, i.e. save computation time by accelerating repetitive function executions.
 ```python
 import numpy as np
 from pyRecall import recall
