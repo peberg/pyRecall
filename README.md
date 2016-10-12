@@ -1,6 +1,6 @@
 # pyRecall [![Build Status](https://travis-ci.org/peberg/pyRecall.png)](https://travis-ci.org/peberg/pyRecall)
 
-Emulate make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) in python code through function decorators, i.e. save computation time by accelerating repetitive function executions.
+Emulate make/cmake or  [SCons](https://docs.python.org/3/library/functools.html) in python through function decorators, i.e. save computation time by accelerating repetitive function executions.
 ```python
 import numpy as np
 from pyRecall import recall
@@ -34,7 +34,7 @@ slow_func(mat1)
 ```
 Since the hashing is also taking the function code into account, pyRecall is compliant with code changes.
 
-Clearing the pyRecall history works as follows
+Clearing pyRecall's history works as follows
 ```python
 from pyRecall import purgeRecalls
 purgeRecalls()

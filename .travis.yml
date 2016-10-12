@@ -9,3 +9,13 @@ script: nosetests test --verbose
 notifications:
   email:
     - peter_bergmann@posteo.de
+
+# public repository on Travis CI
+install:
+  - pip install codecov
+
+script:
+  - coverage run test/test_nose.py
+
+after_success:
+- codecov
