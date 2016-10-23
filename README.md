@@ -42,7 +42,13 @@ purgeRecalls()
 
 
 ##Installation
+In case, Python3 is standard
 ``` sh
 git clone https://github.com/peberg/pyRecall
 python setup.py install
 ```
+otherwise
+``` sh
+python3 setup.py install
+```
+
